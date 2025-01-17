@@ -1,9 +1,12 @@
-from rest_framework import viewsets, permissions
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+from api.authentication import TokenAuthentication
 from .serializers import TaskSerializer
 from .models import Task
 
 
-class TaskViewSet(viewsets.ModelViewSet):
+class TaskViewSet(ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.AllowAny]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
