@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -6,6 +7,7 @@ from drf_spectacular.views import (
 )
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="swagger-ui")),
     path("file", SpectacularAPIView.as_view(), name="schema"),
     path(
         "swagger-ui/",

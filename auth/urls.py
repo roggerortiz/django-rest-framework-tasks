@@ -1,7 +1,9 @@
-from django.urls import path, include
+from django.urls import path
+from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="login")),
     path("login/", views.login, name="login"),
     path("signup/", views.signup, name="signup"),
     path("profile/", views.profile, name="profile"),
